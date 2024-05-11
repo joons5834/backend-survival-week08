@@ -60,4 +60,8 @@ public class CartService {
 
 
     }
+
+    public void deleteAnItem(String id) {
+        cartRepository.deleteById(ProductId.of(id));
+    }
 }

@@ -34,5 +34,10 @@ public class CartController {
         cartService.changeItemQuantity(id, cartItemDto.getQuantity());
     }
 
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable String id) {
+        cartService.deleteAnItem(id);
+    }
 
 }

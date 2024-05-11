@@ -52,13 +52,14 @@ public class CartService {
     }
 
     public void changeItemQuantity(String productId, Long quantity) {
-
-        CartItem itemToChangeQuantity =
-                cartRepository.findById(ProductId.of(productId))
-                        .orElseThrow();
-        itemToChangeQuantity.setQuantity(quantity);
-
-
+        if(quantity == 0){
+            deleteAnItem(productId);
+        }else {
+            CartItem itemToChangeQuantity =
+                    cartRepository.findById(ProductId.of(productId))
+                            .orElseThrow();
+            itemToChangeQuantity.setQuantity(quantity);
+        }
     }
 
     public void deleteAnItem(String id) {
